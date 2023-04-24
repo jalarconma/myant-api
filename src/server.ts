@@ -1,6 +1,6 @@
 import http from 'http';
 import dotenv from 'dotenv';
-import app from './app.js';
+import app from './web-api/app.js';
 
 dotenv.config();
 
