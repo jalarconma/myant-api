@@ -4,6 +4,7 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "outDir": "./dist",

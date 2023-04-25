@@ -1,9 +1,9 @@
-import express from 'express';
-import { getAll, createRegister } from '../../controllers/registers/registers.controller.js';
+// import express from 'express';
+// import { getAll, createRegister } from '../../controllers/registers/registers.controller.js';
 
-const registersRouter = express.Router();
+// const registersRouter = express.Router();
 
-registersRouter.get('/', getAll);
-registersRouter.post('/', createRegister);
+// registersRouter.get('/', getAll);
+// registersRouter.post('/', createRegister);
 
-export default registersRouter;
+// export default registersRouter;
