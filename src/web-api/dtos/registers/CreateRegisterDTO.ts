@@ -19,6 +19,4 @@ export class CreateRegisterDTO {
   
   @IsNotEmpty()
   category: string | undefined;
-
-  constructor() {}
 }

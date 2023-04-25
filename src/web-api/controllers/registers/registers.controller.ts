@@ -1,7 +1,8 @@
 import { plainToInstance } from 'class-transformer';
 import { Request, Response } from 'express';
-import { CreateRegisterDTO } from '../../dtos/registers/CreateRegisterDTO.js';
 import { validate } from 'class-validator';
+
+import { CreateRegisterDTO } from '../../dtos/registers/CreateRegisterDTO.js';
 
 export const getAll = (req: Request, res: Response) =>{
   return res.status(200).json([]);
