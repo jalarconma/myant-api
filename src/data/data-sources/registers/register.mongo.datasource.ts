@@ -1,13 +1,15 @@
 import { RegisterEntity } from "../../../domain/entities/Register.entity.js";
-import { RegisterDAO } from "../../daos/registers/register.dao.js";
+import RegisterModelSchema from "../../mongo-schemas/registers/register.schema.js";
 import { RegisterDataSource } from "./register.datasource";
 
 export class RegisterMongoDatasource implements RegisterDataSource {
 
-  constructor(private registerDAO: RegisterDAO) { }
+  constructor() { }
   
   async addRegister(register: RegisterEntity): Promise<RegisterEntity> {
-    return this.registerDAO.add(register);
+    const newRegister = new RegisterModelSchema({...register, _id: undefined});
+    const insertedRegister = await newRegister.save();
+    return {...register, _id: insertedRegister._id.toString()};
   }
   
 }

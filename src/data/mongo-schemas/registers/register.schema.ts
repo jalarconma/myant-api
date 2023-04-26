@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import { RegisterEntity } from "../../../domain/entities/Register.entity";
 
-const RegisterSchema = new mongoose.Schema({
+const RegisterSchema = new mongoose.Schema<RegisterEntity>({
   description: {
     type: String,
     required: true,
@@ -27,6 +28,6 @@ const RegisterSchema = new mongoose.Schema({
   },
 });
 
-const registerDAO = mongoose.model("Registers", RegisterSchema);
+const RegisterModelSchema = mongoose.model<RegisterEntity>("Registers", RegisterSchema);
 
-export default registerDAO;
+export default RegisterModelSchema;

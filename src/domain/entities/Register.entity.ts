@@ -6,7 +6,7 @@ export interface RegisterEntity {
 
   amount: number;
 
-  registrationDate: Date;
+  registrationDate: string;
 
   type: 'Expense' | 'Income' | 'Transfer';
 

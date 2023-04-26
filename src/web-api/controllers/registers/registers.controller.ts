@@ -31,13 +31,14 @@ export class RegistersController {
         description: registerDTO.description ?? '',
         amount: registerDTO.amount ?? 0,
         type: registerDTO.type ?? 'Expense',
-        registrationDate: registerDTO.registrationDate ?? new Date(),
+        registrationDate: new Date().toDateString(),
         account: registerDTO.account ?? '',
         category: registerDTO.category ?? ''
       });
     
       return res.status(200).json(createdRegister);
     } catch (error) {
+      console.log(error)
       return res.status(500).json(error);
     }
   }
