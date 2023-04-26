@@ -18,16 +18,27 @@ export class RegistersController {
 
   @POST()
   async createRegister(req: Request, res: Response) {
-    const registerDTO = plainToInstance(CreateRegisterDTO, req.body);
-    console.log("dto: ", registerDTO);
-    const errors = await validate(registerDTO);
+    try {
+      const registerDTO = plainToInstance(CreateRegisterDTO, req.body);
+      const errors = await validate(registerDTO);
+    
+      if(errors.length > 0){
+        return res.status(400).json(errors);
+      }
   
-    if(errors.length > 0){
-      return res.status(400).json(errors);
+      const createdRegister = await this.registerService.createRegister({
+        _id: undefined,
+        description: registerDTO.description ?? '',
+        amount: registerDTO.amount ?? 0,
+        type: registerDTO.type ?? 'Expense',
+        registrationDate: registerDTO.registrationDate ?? new Date(),
+        account: registerDTO.account ?? '',
+        category: registerDTO.category ?? ''
+      });
+    
+      return res.status(200).json(createdRegister);
+    } catch (error) {
+      return res.status(500).json(error);
     }
-
-    const createdRegister = await this.registerService.createRegister(registerDTO);
-  
-    return res.status(200).json(createdRegister);
   }
 }

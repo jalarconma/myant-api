@@ -1,10 +1,12 @@
-import { CreateRegisterDTO } from "../../dtos/registers/CreateRegisterDTO";
+import { RegisterEntity } from "../../entities/Register.entity";
+import { RegisterRepository } from "../../repositories/registers/register.repository";
 
 export class RegisterService {
   
-  constructor() {}
+  constructor(private registerRepository: RegisterRepository) {}
 
-  async createRegister(register: CreateRegisterDTO) {
-    return register;
+  async createRegister(register: RegisterEntity): Promise<RegisterEntity> {
+    const createdRegister = await this.registerRepository.addRegister(register);
+    return createdRegister;
   }
 }
